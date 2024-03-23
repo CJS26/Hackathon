@@ -25,12 +25,12 @@ function calculateDistance() {
 }
 let CO2;
 
-if (mode.toLowerCase() === "car") {
+if (mode === "car") {
     CO2 = distance * (8.89 / 25); // CO2 is in KG
- } else if (mode.toLowerCase() === "train") {
+ } else if (mode === "train") {
      CO2 = distance * 0.14;
- } else if (mode.toLowerCase() === "bus") {
+ } else if (mode === "bus") {
      CO2 = distance * 0.28;
- } else if (mode.toLowerCase() === "walking" || mode.toLowerCase() === "biking") {
+ } else if (mode === "walking" || mode === "biking") {
     CO2 = 0;
 }
