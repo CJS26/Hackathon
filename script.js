@@ -22,6 +22,7 @@ function calculateDistance() {
                 } else if (mode === "walking" || mode === "biking") {
                     CO2 = 0;
                 }
+                CO2 = CO2.toString()
                 document.getElementById("distanceResult").innerHTML = `<p>Distance: ${distance}</p>`;
                 document.getElementById("co2Result").innerHTML = `<p>Your trip will produce " + ${CO2} + " KG of CO2.</p>`;
             } else {
