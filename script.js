@@ -13,7 +13,7 @@ function calculateDistance() {
                 const distance = data.rows[0].elements[0].distance.text;
                 // const duration = data.rows[0].elements[0].duration.text;
                 document.getElementById("distanceResult").innerHTML = `<p>Distance: ${distance}</p>`;
-                document.getElementById("co2Result").innerHTML = `<p>Your trip will produce " + ${CO2} + " KG of CO2.</p>`;
+                document.getElementById("co2Result").innerHTML = `<p>Your trip will produce " + ${CO2.toString()} + " KG of CO2.</p>`;
             } else {
                 document.getElementById("distanceResult").innerHTML = `<p>Error: ${data.error_message}</p>`;
             }
@@ -28,9 +28,9 @@ let CO2;
 if (mode === "car") {
     CO2 = distance * (8.89 / 25); // CO2 is in KG
  } else if (mode === "train") {
-     CO2 = distance * 0.14;
+    CO2 = distance * 0.14;
  } else if (mode === "bus") {
-     CO2 = distance * 0.28;
+    CO2 = distance * 0.28;
  } else if (mode === "walking" || mode === "biking") {
     CO2 = 0;
 }
