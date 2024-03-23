@@ -9,7 +9,8 @@ function calculateDistance() {
         .then(response => response.json())
         .then(data => {
             if (data.status === "OK") {
-                const distance = data.rows[0].elements[0].distance.text.parseInt();
+                const distance = data.rows[0].elements[0].distance.text;
+                distNum = distance.parseInt()
                 // const duration = data.rows[0].elements[0].duration.text;
                 let CO2;
                 if (mode === "driving") {
