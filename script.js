@@ -9,7 +9,7 @@ function calculateDistance() {
         .then(response => response.json())
         .then(data => {
             if (data.status === "OK") {
-                const distance = data.rows[0].elements[0].distance.text.slice(0,indexOf('km'));
+                const distance = data.rows[0].elements[0].distance.text.slice(0,data.rows[0].elements[0].distance.text.indexOf('km'));
                 console.log(distance)
                 // const duration = data.rows[0].elements[0].duration.text;
                 let CO2;
