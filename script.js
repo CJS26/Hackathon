@@ -14,9 +14,9 @@ function calculateDistance() {
                 // const duration = data.rows[0].elements[0].duration.text;
                 let CO2;
                 if (mode === "driving") {
-                    CO2 = distance * (8.89 / 25); // CO2 is in KG
+                    CO2 = distNum * (8.89 / 25); // CO2 is in KG
                 } else if (mode === "transit") {
-                    CO2 = distance * 0.14;
+                    CO2 = distNum * 0.14;
                 } else if (mode === "walking" || mode === "bicycling") {
                     CO2 = 0;
                 }
