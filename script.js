@@ -30,7 +30,7 @@
 // let CO2;
 
 // if (modeot.toLowerCase() === "car") {
-//     CO2 = distance * (8.89 / 25); // CO2 is in KG
+    // CO2 = distance * (8.89 / 25); // CO2 is in KG
 // } else if (modeot.toLowerCase() === "train") {
 //     CO2 = distance * 0.14;
 // } else if (modeot.toLowerCase() === "bus") {
@@ -54,8 +54,9 @@ function calculateDistance() {
         .then(data => {
             if (data.status === "OK") {
                 const distance = data.rows[0].elements[0].distance.text;
-                const duration = data.rows[0].elements[0].duration.text;
+                // const duration = data.rows[0].elements[0].duration.text;
                 document.getElementById("distanceResult").innerHTML = `<p>Distance: ${distance}</p>`;
+                document.getElementById("co2Result").innerHTML = `<p>Your trip will produce " + ${CO2.toFixed(2)} + " KG of CO2.</p>`;
             } else {
                 document.getElementById("distanceResult").innerHTML = `<p>Error: ${data.error_message}</p>`;
             }
@@ -65,3 +66,18 @@ function calculateDistance() {
             document.getElementById("distanceResult").innerHTML = "<p>Error fetching data. Please try again later.</p>";
         });
 }
+let CO2;
+
+if (modeot.toLowerCase() === "car") {
+    CO2 = distance * (8.89 / 25); // CO2 is in KG
+ } else if (mode.toLowerCase() === "train") {
+     CO2 = distance * 0.14;
+ } else if (mode.toLowerCase() === "bus") {
+     CO2 = distance * 0.28;
+ } else if (mode.toLowerCase() === "walking" || modeot.toLowerCase() === "biking") {
+    CO2 = 0;
+}
+
+
+displayElement.innerText = "The CO2 emission is: " + CO2 + " KG";
+ alert("Your trip will produce " + CO2.toFixed(2) + " KG of CO2.");
