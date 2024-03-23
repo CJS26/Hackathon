@@ -9,8 +9,8 @@ function calculateDistance() {
         .then(response => response.json())
         .then(data => {
             if (data.status === "OK") {
-                const distance = data.rows[0].elements[0].distance.text.slice(0,data.rows[0].elements[0].distance.text.indexOf('km'));
-                console.log(distance)
+                const kilometers = data.rows[0].elements[0].distance.text.slice(0,data.rows[0].elements[0].distance.text.indexOf('km'));
+                let distance = kilometers * 0.6213711922
                 // const duration = data.rows[0].elements[0].duration.text;
                 let CO2;
                 if (mode === "driving") {
@@ -20,7 +20,7 @@ function calculateDistance() {
                 } else if (mode === "walking" || mode === "bicycling") {
                     CO2 = 0;
                 }
-                document.getElementById("distanceResult").innerHTML = `<p>Distance: ${distance}</p>`;
+                document.getElementById("distanceResult").innerHTML = `<p>Distance: ${distance} KM.</p>`;
         document.getElementById("co2Result").innerHTML = `<p>Your trip will produce ${CO2.toFixed(2)} KG of CO2.</p>`;
             } else {
                 document.getElementById("distanceResult").innerHTML = `<p>Error: ${data.error_message}</p>`;
