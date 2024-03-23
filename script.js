@@ -12,8 +12,18 @@ function calculateDistance() {
             if (data.status === "OK") {
                 const distance = data.rows[0].elements[0].distance.text;
                 // const duration = data.rows[0].elements[0].duration.text;
+                let CO2;
+                if (mode === "car") {
+                    CO2 = distance * (8.89 / 25); // CO2 is in KG
+                } else if (mode === "train") {
+                    CO2 = distance * 0.14;
+                } else if (mode === "bus") {
+                    CO2 = distance * 0.28;
+                } else if (mode === "walking" || mode === "biking") {
+                    CO2 = 0;
+                }
                 document.getElementById("distanceResult").innerHTML = `<p>Distance: ${distance}</p>`;
-                document.getElementById("co2Result").innerHTML = `<p>Your trip will produce " + ${CO2.toString()} + " KG of CO2.</p>`;
+                document.getElementById("co2Result").innerHTML = `<p>Your trip will produce " + ${CO2} + " KG of CO2.</p>`;
             } else {
                 document.getElementById("distanceResult").innerHTML = `<p>Error: ${data.error_message}</p>`;
             }
@@ -22,15 +32,4 @@ function calculateDistance() {
             console.error("Error fetching data: ", error);
             document.getElementById("distanceResult").innerHTML = "<p>Error fetching data. Please try again later.</p>";
         });
-}
-let CO2;
-
-if (mode === "car") {
-    CO2 = distance * (8.89 / 25); // CO2 is in KG
- } else if (mode === "train") {
-    CO2 = distance * 0.14;
- } else if (mode === "bus") {
-    CO2 = distance * 0.28;
- } else if (mode === "walking" || mode === "biking") {
-    CO2 = 0;
 }
