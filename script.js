@@ -20,8 +20,8 @@ function calculateDistance() {
                 } else if (mode === "walking" || mode === "bicycling") {
                     CO2 = 0;
                 }
-                document.getElementById("distanceResult").innerHTML = `<p>Distance: ${distance.toFixed(2)} KM.</p>`;
-        document.getElementById("co2Result").innerHTML = `<p>Your trip will produce ${CO2.toFixed(2)} KG of CO2.</p>`;
+                document.getElementById("distanceResult").innerHTML = `<p>Distance: ${distance.toFixed(2)} miles.</p>`;
+        document.getElementById("co2Result").innerHTML = `<p>Your trip will produce an estimated ${CO2.toFixed(2)} KG of CO2.</p>`;
             } else {
                 document.getElementById("distanceResult").innerHTML = `<p>Error: ${data.error_message}</p>`;
             }
